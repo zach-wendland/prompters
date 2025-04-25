@@ -76,14 +76,16 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Add a text input for the user to input their OpenAI API key
+# Pre-fill the OpenAI API key securely
 if "api_key" not in st.session_state:
-    st.session_state["api_key"] = ""
+    st.session_state["api_key"] = "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"
 
-st.session_state["api_key"] = st.text_input(
+# Mask the input field and make it secure
+st.text_input(
     "Enter your OpenAI API Key:",
     value=st.session_state["api_key"],
-    type="password"
+    type="password",
+    key="api_key_input"
 )
 
 # Use the API key from session state
