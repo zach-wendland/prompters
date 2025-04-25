@@ -138,6 +138,13 @@ if "audio_duration" not in st.session_state:
 def handle_audio_input():
     try:
         with st.spinner("🎙️ Recording..."):
+            try:
+                # Check if audio device is available
+                sd.query_devices(None, 'input')
+            except sd.PortAudioError:
+                st.warning("⚠️ No audio device detected. This feature requires a microphone.")
+                return
+
             audio_file = agent.record_audio(duration=st.session_state.audio_duration)
             transcript = agent.transcribe_audio(file_path=audio_file)
             st.session_state.raw_input = transcript

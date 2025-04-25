@@ -110,7 +110,7 @@ class PromptRefinementAgent:
     
     def record_audio(self, duration=60, samplerate=44100):
         """
-        Record audio from the microphone
+        Record audio from the microphone or use dummy device if no audio device is available
         
         Args:
             duration (int): Recording duration in seconds
@@ -119,9 +119,22 @@ class PromptRefinementAgent:
         Returns:
             str: Path to the temporary audio file
         """
+        try:
+            # Try to use default device
+            device_info = sd.query_devices(None, 'input')
+        except sd.PortAudioError:
+            # If no device available, use dummy device
+            sd.default.device = 'null'  # Use null device
+            print("No audio device found. Using dummy device.")
+        
         print("Recording...")
-        recording = sd.rec(int(samplerate * duration), samplerate=samplerate, channels=1, dtype='float64')
-        sd.wait()  # Wait until recording is finished
+        try:
+            recording = sd.rec(int(samplerate * duration), samplerate=samplerate, channels=1, dtype='float64')
+            sd.wait()  # Wait until recording is finished
+        except sd.PortAudioError as e:
+            # If recording fails, return empty recording
+            print(f"Audio recording failed: {e}")
+            recording = np.zeros((int(samplerate * duration), 1))
         
         # Create a temporary file
         temp_dir = tempfile.gettempdir()
