@@ -36,8 +36,11 @@ class PromptRefinementAgent:
         @classmethod
         def validate(cls, val): return val.lower() in cls._value2member_map_
 
-    def __init__(self, model="gpt-4.1-mini"):
-        self.client = OpenAI()  # OpenAI client will automatically use OPENAI_API_KEY from environment
+    def __init__(self, api_key=None, model="gpt-4.1-mini"):
+        if api_key:
+            self.client = OpenAI(api_key=api_key)
+        else:
+            self.client = OpenAI()  # Will try to use OPENAI_API_KEY from environment
         self.model = model
 
     def _sanitize(self, text): return re.sub(r"[`*#<>{}\[\]()\"'\\]", "", text).strip()

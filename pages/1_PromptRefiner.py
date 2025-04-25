@@ -94,7 +94,8 @@ st.markdown(
 st.title("🧠 PROMPT REFINER")
 st.markdown('<div style="margin-bottom: 2em;">💼 Blacksite-level prompt transformation</div>', unsafe_allow_html=True)
 
-agent = PromptRefinementAgent()
+# Initialize the agent with the API key from session state
+agent = PromptRefinementAgent(api_key=st.session_state["api_key"])
 
 # Initialize all session state variables
 if "refined_output" not in st.session_state:

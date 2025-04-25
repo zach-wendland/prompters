@@ -1,6 +1,8 @@
 import streamlit as st
 from dotenv import load_dotenv
+import os
 
+# Load environment variables
 load_dotenv()
 
 st.set_page_config(
@@ -28,10 +30,15 @@ st.markdown("""
             color: #C5C6C7;
         }
         
+        /* Hide password visibility toggle */
+        button[aria-label="Toggle password visibility"] {
+            display: none !important;
+        }
+        
         /* Text Styling */
         h1, h2, h3 {
             font-family: 'Orbitron', sans-serif !important;
-            color: #14FFEC !important;
+            color: #C5C6C7 !important;
             text-shadow: 0 0 10px rgba(20, 255, 236, 0.5);
         }
         p, div {
@@ -76,23 +83,35 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Enter your OpenAI API key securely
-if "api_key" not in st.session_state:
-    st.session_state["api_key"] = "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"
+# Move API key handling to sidebar
+with st.sidebar:
+    st.markdown("### ⚙️ Configuration")
+    
+    # Enter your OpenAI API key securely
+    if "api_key" not in st.session_state:
+        # Try to get API key from environment first
+        api_key = os.getenv("OPENAI_API_KEY")
+        if api_key:
+            st.session_state["api_key"] = api_key
+        else:
+            # Use the default key if environment variable is not set
+            st.session_state["api_key"] = "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"
 
-# Mask the input field and make it secure
-st.text_input(
-    "Enter your OpenAI API Key:",
-    value=st.session_state["api_key"],
-    type="password",
-    key="api_key_input"
-)
+    # Update the API key in session state when input changes
+    api_key_input = st.text_input(
+        "OpenAI API Key:",
+        value=st.session_state["api_key"],
+        type="password",
+        key="api_key_input",
+        help="Your OpenAI API key will be securely stored in the session state"
+    )
 
-# Use the API key from session state
-openai_key = st.session_state["api_key"]
+    if api_key_input != st.session_state["api_key"]:
+        st.session_state["api_key"] = api_key_input
+        st.rerun()  # Rerun to ensure all components update with new API key
 
-if not openai_key:
-    st.warning("Please enter your OpenAI API key to proceed.")
+    if not st.session_state["api_key"]:
+        st.sidebar.warning("⚠️ Please enter your OpenAI API key to proceed.")
 
 # Main page content
 st.title("🛡️ PROMPTER")
