@@ -30,11 +30,6 @@ st.markdown("""
             color: #C5C6C7;
         }
         
-        /* Hide password visibility toggle */
-        button[aria-label="Toggle password visibility"] {
-            display: none !important;
-        }
-        
         /* Text Styling */
         h1, h2, h3 {
             font-family: 'Orbitron', sans-serif !important;
