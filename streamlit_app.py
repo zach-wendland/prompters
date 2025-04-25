@@ -3,8 +3,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-openai_key = st.secrets["openai"]["api_key"]
-
 st.set_page_config(
     page_title="🛡️Prompter",
     page_icon="🛡️",
@@ -77,6 +75,22 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
+# Add a text input for the user to input their OpenAI API key
+if "api_key" not in st.session_state:
+    st.session_state["api_key"] = ""
+
+st.session_state["api_key"] = st.text_input(
+    "Enter your OpenAI API Key:",
+    value=st.session_state["api_key"],
+    type="password"
+)
+
+# Use the API key from session state
+openai_key = st.session_state["api_key"]
+
+if not openai_key:
+    st.warning("Please enter your OpenAI API key to proceed.")
 
 # Main page content
 st.title("🛡️ PROMPTER")
