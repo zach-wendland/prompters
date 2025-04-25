@@ -1,0 +1,45 @@
+# Python-related
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+
+# Environment variables
+.env
+*.env
+
+# Streamlit-specific
+.streamlit/
+*.stcache
+*.stlog
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+
+# API keys placeholder
+# Add your API keys here in a secure format
+# Example: API_KEY=your_api_key_here
+api_keys/
+
+# VSCode settings
+.vscode/
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+
+
+
+venv/
+env/
