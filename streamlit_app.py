@@ -6,7 +6,7 @@ load_dotenv()
 openai_key = st.secrets["openai"]["api_key"]
 
 st.set_page_config(
-    page_title="🛡️Prompter HQ",
+    page_title="🛡️Prompter",
     page_icon="🛡️",
     layout="wide",
     initial_sidebar_state="expanded"
