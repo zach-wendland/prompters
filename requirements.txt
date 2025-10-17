@@ -1,7 +1,0 @@
-openai
-streamlit
-python-dotenv
-sounddevice
-soundfile
-numpy
-scipy
