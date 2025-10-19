@@ -6,7 +6,7 @@ This folder contains a standalone Next.js sandbox that experiments with the Opti
 
 ## Getting Started
 
-1. `cd games/lumbridge-rpg`
+1. `cd apps/lumbridge-rpg`
 2. Install dependencies (Node 18+ recommended):
    ```bash
    npm install
