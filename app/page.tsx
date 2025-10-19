@@ -14,6 +14,12 @@ const modules = [
     href: "/bane-internet-gauntlet",
     icon: "🕶️",
   },
+  {
+    title: "SQL Syntax Converter",
+    description: "Transform SQL statements between dialects with dialect-specific notes and verification guidance.",
+    href: "/sql-converter",
+    icon: "🧮",
+  },
 ];
 
 export default function HomePage() {
