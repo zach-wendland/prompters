@@ -10,6 +10,12 @@ Prompter is now a fully client-forward Next.js + TypeScript application that pro
 - [Framer Motion](https://www.framer.com/motion/) for subtle motion cues
 - [OpenAI Node SDK](https://www.npmjs.com/package/openai) to request prompt refinements
 
+## Repository Layout
+
+- `apps/prompter` – Operator console with modular prompt engineering tools (default `npm run dev` target).
+- `apps/lumbridge-rpg` – Standalone Lumbridge RPG Phaser prototype extracted from the main experience.
+- `docs/` – Design documents and reference material.
+
 ## Getting Started
 
 1. Install dependencies:
@@ -22,13 +28,13 @@ Prompter is now a fully client-forward Next.js + TypeScript application that pro
    - Provide it at runtime inside the application (stored in localStorage only), or
    - Export `OPENAI_API_KEY` in your shell before starting the dev server.
 
-3. Launch the development server:
+3. Launch the Prompter development server:
 
    ```bash
    npm run dev
    ```
 
-   The app will be available at [http://localhost:3000](http://localhost:3000).
+   The console will be available at [http://localhost:3000](http://localhost:3000).
 
 ## Prompt Refinement Workflow
 
@@ -65,8 +71,8 @@ Additional tests can be added as the project evolves.
 
 ## Lumbridge RPG Prototype
 
-The Option B sandbox has been extracted into a standalone project under [`games/lumbridge-rpg/`](games/lumbridge-rpg/).
+The Option B sandbox has been extracted into a standalone project under [`apps/lumbridge-rpg/`](apps/lumbridge-rpg/).
 
-- `cd games/lumbridge-rpg` and install dependencies to work on the RuneScape prototype in isolation from the core Prompter app.
+- `cd apps/lumbridge-rpg` and install dependencies to work on the RuneScape prototype in isolation from the core Prompter app.
 - The Next.js + Phaser scene still rotates Woodcutting, Fishing, Crafting, and Combat XP awards to mirror the MVP skills.
 - Update the adventurer name from the side panel and watch the Phaser banner refresh immediately.

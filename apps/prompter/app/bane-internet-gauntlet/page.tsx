@@ -1,5 +1,6 @@
 "use client";
 
+import NextImage from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const CANVAS_WIDTH = 720;
@@ -392,10 +393,10 @@ export default function BaneInternetGauntlet() {
         <div className="space-y-6 rounded-2xl border border-teal/30 bg-gunmetal/70 p-6 shadow-neon">
           <header className="space-y-2">
             <p className="text-xs uppercase tracking-[0.35em] text-teal">Simulation</p>
-            <h2 className="font-orbitron text-2xl text-aqua">Bane's Internet Gauntlet</h2>
+            <h2 className="font-orbitron text-2xl text-aqua">Bane’s Internet Gauntlet</h2>
             <p className="text-sm text-steel/80">
               Maneuver through the datastream, collect encrypted routers, and dodge malicious viral shards.
-              Bane's visage oversees your every move — prove you were truly born in the internet.
+              Bane’s visage oversees your every move — prove you were truly born in the internet.
             </p>
           </header>
 
@@ -444,11 +445,14 @@ export default function BaneInternetGauntlet() {
         </div>
 
         <aside className="space-y-4 rounded-2xl border border-teal/30 bg-gunmetal/70 p-6 text-sm shadow-neon">
-          <h3 className="font-orbitron text-xl text-steel">Bane's Manifesto</h3>
-          <img
+          <h3 className="font-orbitron text-xl text-steel">Bane’s Manifesto</h3>
+          <NextImage
             src={HERO_IMAGE_SRC}
             alt="Bane declaring his mastery of the internet"
-            className="w-full rounded-lg border border-teal/30 shadow-lg"
+            width={640}
+            height={360}
+            className="h-auto w-full rounded-lg border border-teal/30 shadow-lg"
+            priority
           />
           <p className="text-steel/70">
             You merely adopted the internet. Harness the gauntlet to demonstrate you were born in it — molded by its
