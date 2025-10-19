@@ -10,6 +10,12 @@ Prompter is now a fully client-forward Next.js + TypeScript application that pro
 - [Framer Motion](https://www.framer.com/motion/) for subtle motion cues
 - [OpenAI Node SDK](https://www.npmjs.com/package/openai) to request prompt refinements
 
+## Repository Layout
+
+- `apps/prompter` – Operator console with modular prompt engineering tools (default `npm run dev` target).
+- `apps/lumbridge-rpg` – Standalone Lumbridge RPG Phaser prototype extracted from the main experience.
+- `docs/` – Design documents and reference material.
+
 ## Getting Started
 
 1. Install dependencies:
@@ -22,13 +28,13 @@ Prompter is now a fully client-forward Next.js + TypeScript application that pro
    - Provide it at runtime inside the application (stored in localStorage only), or
    - Export `OPENAI_API_KEY` in your shell before starting the dev server.
 
-3. Launch the development server:
+3. Launch the Prompter development server:
 
    ```bash
    npm run dev
    ```
 
-   The app will be available at [http://localhost:3000](http://localhost:3000).
+   The console will be available at [http://localhost:3000](http://localhost:3000).
 
 ## Prompt Refinement Workflow
 
