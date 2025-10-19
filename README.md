@@ -71,8 +71,8 @@ Additional tests can be added as the project evolves.
 
 ## Lumbridge RPG Prototype
 
-The Option B sandbox has been extracted into a standalone project under [`apps/lumbridge-rpg/`](apps/lumbridge-rpg/).
+The Option B sandbox has been extracted into a standalone project under [`games/lumbridge-rpg/`](games/lumbridge-rpg/).
 
-- `cd apps/lumbridge-rpg` and install dependencies to work on the RuneScape prototype in isolation from the core Prompter app.
+- `cd games/lumbridge-rpg` and install dependencies to work on the RuneScape prototype in isolation from the core Prompter app.
 - The Next.js + Phaser scene still rotates Woodcutting, Fishing, Crafting, and Combat XP awards to mirror the MVP skills.
 - Update the adventurer name from the side panel and watch the Phaser banner refresh immediately.
