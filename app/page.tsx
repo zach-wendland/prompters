@@ -9,6 +9,12 @@ const modules = [
     icon: "🧠",
   },
   {
+    title: "DMCA & LinkGuard Console",
+    description: "Orchestrate takedowns and affiliate link defense with evidence bundles and compliance guardrails.",
+    href: "/dmca-linkguard",
+    icon: "🛡️",
+  },
+  {
     title: "Bane's Internet Gauntlet",
     description: "Pilot Bane through a neon datastream, dodging viral shards while securing routers for bandwidth supremacy.",
     href: "/bane-internet-gauntlet",
