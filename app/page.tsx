@@ -8,6 +8,12 @@ const modules = [
     href: "/prompt-refiner",
     icon: "🧠",
   },
+  {
+    title: "Bane's Internet Gauntlet",
+    description: "Pilot Bane through a neon datastream, dodging viral shards while securing routers for bandwidth supremacy.",
+    href: "/bane-internet-gauntlet",
+    icon: "🕶️",
+  },
 ];
 
 export default function HomePage() {
