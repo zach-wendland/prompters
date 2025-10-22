@@ -57,9 +57,9 @@ Return your answer as JSON in the following format:
         { role: "system", content: system },
         { role: "user", content: user },
       ],
-      response_format: {
-        type: "json_schema",
-        json_schema: {
+      text: {
+        format: {
+          type: "json_schema",
           name: "sql_translation_response",
           schema: {
             type: "object",
@@ -73,13 +73,21 @@ Return your answer as JSON in the following format:
               },
             },
           },
+          strict: true,
         },
       },
       temperature: 0.2,
     });
 
-    const output = response.output?.[0];
-    const text = output?.content?.[0]?.text ?? response.output_text;
+    const structuredText = response.output
+      ?.flatMap((item) =>
+        item.type === "message"
+          ? item.content.map((part) => (part.type === "output_text" ? part.text : undefined))
+          : [],
+      )
+      .find((value): value is string => typeof value === "string");
+
+    const text = (response.output_text || structuredText)?.trim();
 
     if (!text) {
       return NextResponse.json({ error: "No response returned from OpenAI" }, { status: 502 });
